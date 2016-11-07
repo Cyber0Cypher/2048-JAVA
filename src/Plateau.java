@@ -214,15 +214,6 @@ public class Plateau {
 			System.out.print("+------");
 		}
 		System.out.println("+");
-		
-//		System.out.println("| "+getCase(0,3)+" | "+getCase(1,3)+" | "+getCase(2,3)+" | "+getCase(3,3)+" |");
-//		System.out.println("+---+---+---+---+");
-//		System.out.println("| "+getCase(0,2)+" | "+getCase(1,2)+" | "+getCase(2,2)+" | "+getCase(3,2)+" |");
-//		System.out.println("+---+---+---+---+");
-//		System.out.println("| "+getCase(0,1)+" | "+getCase(1,1)+" | "+getCase(2,1)+" | "+getCase(3,1)+" |");
-//		System.out.println("+---+---+---+---+");
-//		System.out.println("| "+getCase(0,0)+" | "+getCase(1,0)+" | "+getCase(2,0)+" | "+getCase(3,0)+" |");
-//		System.out.println("+---+---+---+---+");
 	}
 	
 	public boolean gagne(){
