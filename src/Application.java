@@ -1,25 +1,10 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.util.Scanner;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 
 public class Application {
 
 	public static void main(String[] args) {
 		
-		/*
-		JFrame f = new JFrame("2048");
-		f.setSize(500, 520);
-		f.setLocationRelativeTo(null);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		JPanel pan = new JPanel();
-		pan.setBackground(Color.lightGray);
-		f.setContentPane(new Panneau());
-		f.setVisible(true);
-		*/
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("+--------------------+");
@@ -48,7 +33,7 @@ public class Application {
 				System.out.println("|             Vous pouvez continuer de jouer               |");
 				System.out.println("+----------------------------------------------------------+");
 			}
-			if(bouge == true) // On vérifie que des tuiles ont bougées, si ce n'est pas le cas aucune autre tuile n'est inseré
+			if(bouge) // On vérifie que des tuiles ont bougées, si ce n'est pas le cas aucune autre tuile n'est inseré
 			{
 				plateau.insererTuile(plateau, tuile);
 				plateau.afficherPlateau();

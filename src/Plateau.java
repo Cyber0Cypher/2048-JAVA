@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class Plateau {
+	private static final int VALEUR_VICTOIRE = 2048;
+
 	private int taille;
 	
 	ArrayList<ArrayList<Integer>> plateau = new ArrayList<ArrayList<Integer>>();
@@ -73,7 +75,7 @@ public class Plateau {
 						setCase(i,j, 0);
 						bouge = true;
 					}
-					if(getCase(i,j) != 0 && getCase(i,j+1) == getCase(i,j) && compile.get(i) == false){
+					if(getCase(i,j) != 0 && getCase(i,j+1) == getCase(i,j) && !compile.get(i)){
 						setCase(i,j+1, getCase(i,j+1)*2);
 						setCase(i,j, 0);
 						bouge = true;
@@ -100,7 +102,7 @@ public class Plateau {
 						setCase(i,j, 0);
 						bouge = true;
 					}
-					if(getCase(i,j) != 0 && getCase(i,j-1) == getCase(i,j) && compile.get(i) == false){
+					if(getCase(i,j) != 0 && getCase(i,j-1) == getCase(i,j) && !compile.get(i)){
 						setCase(i,j-1, getCase(i,j-1)*2);
 						setCase(i,j, 0);
 						bouge = true;
@@ -127,7 +129,7 @@ public class Plateau {
 						setCase(i,j, 0);
 						bouge = true;
 					}
-					if(getCase(i,j) != 0 && getCase(i+1,j) == getCase(i,j) && compile.get(j) == false){
+					if(getCase(i,j) != 0 && getCase(i+1,j) == getCase(i,j) && !compile.get(j)){
 						setCase(i+1,j, getCase(i+1,j)*2);
 						setCase(i,j, 0);
 						bouge = true;
@@ -154,7 +156,7 @@ public class Plateau {
 						setCase(i,j, 0);
 						bouge = true;
 					}
-					if(getCase(i,j) != 0 && getCase(i-1,j) == getCase(i,j) && compile.get(j) == false){
+					if(getCase(i,j) != 0 && getCase(i-1,j) == getCase(i,j) && !compile.get(j)){
 						setCase(i-1,j, getCase(i-1,j)*2);
 						setCase(i,j, 0);
 						bouge = true;
@@ -181,7 +183,11 @@ public class Plateau {
 			}
 			System.out.println("|");
 			for(int i=0; i<taille; i++){
-				if(getCase(i,j)<=9){
+				if(getCase(i,j) == 0){
+					System.out.print("|      ");
+				}
+				else if(getCase(i,j)<=9){
+					
 					System.out.print("|   "+getCase(i,j)+"  ");
 				}
 				else if(getCase(i,j)<=99)
@@ -220,9 +226,9 @@ public class Plateau {
 	}
 	
 	public boolean gagne(){
-		for (int i=0; i<4; i++){
-			for (int j=0; j<4; j++){
-				if(getCase(i,j) != 0 && (int) getCase(i,j) == 2048){
+		for (int i=0; i<taille; i++){
+			for (int j=0; j<taille; j++){
+				if(getCase(i,j) != 0 && getCase(i,j) == VALEUR_VICTOIRE){
 					return true;
 				}
 			}
@@ -232,14 +238,14 @@ public class Plateau {
 	
 	public boolean perdu(){
 		int nbTuile = 0;
-		for (int i=0; i<4; i++){
-			for (int j=0; j<4; j++){
+		for (int i=0; i<taille; i++){
+			for (int j=0; j<taille; j++){
 				if(getCase(i,j) != 0){
 					nbTuile++;
 				}
 			}
 		}
-		if(nbTuile >= 16){
+		if(nbTuile >= taille*taille){
 			return true;
 		}
 		else{
